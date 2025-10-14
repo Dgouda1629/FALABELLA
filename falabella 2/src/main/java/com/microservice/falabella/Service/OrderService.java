@@ -39,10 +39,16 @@ public class OrderService {
         order.setOrderStatus(OrderStatus.CANCELLED);
         return orderRepository.save(order);
     }
+    //UPDATE
     public Order updateOrderStatus(String logisticOrderId, OrderStatus status) {
         Order order = orderRepository.findByLogisticOrderId(logisticOrderId)
                 .orElseThrow(() -> new NoSuchElementException("Order not found"));
         order.setOrderStatus(status);
         return orderRepository.save(order);
+    }
+
+    public Order getOrder(String logisticOrderId) {
+        return orderRepository.findByLogisticOrderId(logisticOrderId)
+                .orElseThrow(() -> new NoSuchElementException("Order not found"));
     }
 }

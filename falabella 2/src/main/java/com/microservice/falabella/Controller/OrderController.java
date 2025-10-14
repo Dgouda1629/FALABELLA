@@ -38,4 +38,9 @@ public class OrderController {
         return ResponseEntity.ok(orderService.updateOrderStatus(logisticOrderId, status));
     }
 
+    @GetMapping("/{logisticOrderId}")
+    public ResponseEntity<Order> getOrder(@PathVariable String logisticOrderId) {
+        return ResponseEntity.ok(orderService.getOrder(logisticOrderId));
+    }
+
 }
