@@ -19,14 +19,13 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    //Create new order
+
     @PostMapping
     public ResponseEntity<Order> createOrder(@Valid @RequestBody OrderDTO dto) {
         return ResponseEntity.ok(orderService.createOrder(dto));
 
     }
 
-    //cancel exist order
     @PutMapping("/{logisticOrderId}/cancel")
     public ResponseEntity<Order> cancelOrder(@PathVariable String logisticOrderId) {
         return ResponseEntity.ok(orderService.cancelOrder(logisticOrderId));
